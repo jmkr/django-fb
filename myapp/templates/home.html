@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% load bootstrap %}
+
+        <!--<link href="{{ STATIC_URL }}bootstrap.css" rel="stylesheet">-->
+        {% bootstrap_css %}
+
+    </head>
+    <body>
+
+        <p>Hi {{me.first_name}}</p>
+
+        <h1>Brogramming Quote of the Day</h1>
+
+        <blockquote>{{quote}}</blockquote>
+
+        <p>Or, hit reload if you want a new one...</p>
+
+        <form method="POST" action="{% url update_status %}"  >
+            <input type="hidden" name="quote" value="{{quote}}" />
+            <input type="hidden" name="access_token" value="{{access_token}}" />
+            <input type="submit" value="Set as my status!"/>
+        </form>
+
+    </body>
+</html>
