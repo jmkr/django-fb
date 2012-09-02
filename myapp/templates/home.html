@@ -8,20 +8,32 @@
 
     </head>
     <body>
+        <h6>Hi {{me.first_name}}</h6>
 
-        <p>Hi {{me.first_name}}</p>
+        <!--<div class="hero-unit">
+            <h2>Brogramming Quote of the Day</h2>
+        </div>-->
 
-        <h1>Brogramming Quote of the Day</h1>
+        <div class="hero-unit">
+            <h2>Brogramming Quote of the Day</h2>
+            <br><br>
 
-        <blockquote>{{quote}}</blockquote>
+            <blockquote><p><em>{{quote}}</em><p></blockquote>
+            <br><br><br>
+            <form method="POST" action="{% url update_status %}"  >
+                <input type="hidden" name="quote" value="{{quote}}" />
+                <input type="hidden" name="access_token" value="{{access_token}}" />
+                <input type="hidden" name="me" value="{{me}}" />
+                <div class="actions">
+                    <input type="submit" class="btn primary" value="Set as my status!"/>
+                    <input type="submit" class="btn "value="Reload" name="cancel" />
+                    <!--<button type="reset" class="btn" action="{% url home %}">Reload</button>-->
+                    <p>Or, hit reload if you want a new one...</p>
+                </div>
+            </form>
+        </div>
+        <div class="well">
 
-        <p>Or, hit reload if you want a new one...</p>
-
-        <form method="POST" action="{% url update_status %}"  >
-            <input type="hidden" name="quote" value="{{quote}}" />
-            <input type="hidden" name="access_token" value="{{access_token}}" />
-            <input type="submit" value="Set as my status!"/>
-        </form>
-
+        </div>
     </body>
 </html>

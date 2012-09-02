@@ -14,6 +14,7 @@ urlpatterns = patterns('',
 
     url(r'^$', 'mysite.myapp.views.home', name="home"),
     url(r'^update_status$', 'mysite.myapp.views.update_status', name="update_status"),
+    url(r'^reload$', 'mysite.myapp.views.reload', name="reload"),
 
 
     # Uncomment the next line to enable the admin:
