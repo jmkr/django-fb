@@ -4,7 +4,8 @@ import random
 from django.shortcuts import render
 from django_facebook.decorators import canvas_only
 from django.http import HttpResponseRedirect
-import json
+from django.utils import simplejson
+
 
 QUOTES = [
     "Programmer - an organism that turns coffee into software. ",
@@ -133,8 +134,10 @@ def update_status(request):
     submit = request.POST.get('cancel', None)
 
     if submit:
-        me = request.POST['me']
-        print me
+        #me = simplejson.loads(request.POST['me'])
+        #print me
+        graph = facebook.GraphAPI(access_token)
+        me = graph.get_object('me')
         quote = random.choice(QUOTES)
         return render(request, 'home.html', {'me': me, 'access_token': access_token, 'quote': quote})
     else:
